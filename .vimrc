@@ -4,8 +4,11 @@ set incsearch
 set wrapscan
 set encoding=utf8
 set mouse=a
+"set shiftwidth=4
+set tabstop=4
+set expandtab
+set autoindent
 syntax on
-
 
 imap <C-d> <esc>ddi
 noremap <C-f> :execute "grep! " . expand("<cword>"). " -r " . searchPath <cr>:copen<cr>
@@ -20,13 +23,12 @@ noremap <leader>s <esc>:w!<cr>
 inoremap <leader>x <esc>:q!<cr>
 noremap <leader>x <esc>:q!<cr>
 
-function Findall(something)
+function! Findall(something)
 	let needsearch=shellescape(a:something)
 	execute "grep! " . needsearch . " -r " . g:searchPath
 	echom "grep! " . needsearch . " -r " . g:searchPath
 	copen
 endfunction
-
 
 augroup willer
 autocmd!
