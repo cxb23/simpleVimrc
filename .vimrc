@@ -1,5 +1,8 @@
-
-iabbrev if if() {<cr>}
+iabbrev [ ['']<left><left>
+iabbrev ' ''<left>
+iabbrev " ""<left>
+iabbrev if if() {<cr><cr>}
+iabbrev foreach foreach($ as $index => $value) {<cr><cr>}
 
 set nu
 set hlsearch
