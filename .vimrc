@@ -1,15 +1,21 @@
-iabbrev [ []'']<left><left>
-iabbrev ' ''<left>
-iabbrev " ""<left>
-iabbrev  if() {<cr><cr>}
-iabbrev foreach foreach($ as $index => $value) {<cr><cr>}
+inoremap [ []<left>
+inoremap ( ()<left>
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap { {<cr><tab><cr><left><left><left><left>}<up><tab>
+inoremap <C-l> <right>
+inoremap <C-h> <left>
+inoremap <C-k> <up>
+
+inoremap <C-f> <esc>/
+noremap <C-f> <esc>/
+
 
 set nu
 set hlsearch
 set incsearch
 set wrapscan
 set encoding=utf8
-"set mouse=a
 set tabstop=4
 set expandtab
 set softtabstop=4
@@ -31,7 +37,6 @@ noremap <leader>o <esc>:ls<CR>:b
 inoremap <leader><enter> <esc>o
 
 inoremap <C-z> <esc>ui
-
 imap <C-d> <esc>ddi
 noremap <C-j> :execute "grep! " . expand("<cword>"). " -r " . searchPath <cr>:copen<cr>
 vnoremap <leader>F :let tmpSearch=shellescape(@")<cr>:execute "grep! " . tmpSearch . " -r " . searchPath <cr>:copen<cr>
@@ -47,8 +52,8 @@ inoremap <leader>x <esc>:q!<cr>
 noremap <leader>x <esc>:q!<cr>
 noremap <leader>t <esc>:tabs<cr>
 
-inoremap <C-f> <esc>:call Findall('')<left><left>
-noremap <C-f> <esc>:call Findall('')<left><left>
+inoremap <leader>f <esc>:call Findall('')<left><left>
+noremap <leader>f <esc>:call Findall('')<left><left>
 function! Findall(something)
 	let needsearch=shellescape(a:something)
 	execute "grep! " . needsearch . " -r " . g:searchPath
