@@ -10,7 +10,7 @@ inoremap <C-k> <up>
 inoremap <C-f> <esc>/
 noremap <C-f> <esc>/
 
-
+set mouse=a
 set nu
 set hlsearch
 set incsearch
