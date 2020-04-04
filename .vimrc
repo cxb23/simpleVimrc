@@ -1,8 +1,20 @@
+set backspace=indent,eol,start
 inoremap [ []<left>
 inoremap ( ()<left>
 inoremap " ""<left>
 inoremap ' ''<left>
 inoremap { {<cr><tab><cr><left><left><left><left>}<up><tab>
+
+noremap <leader>c <esc>:call Delbranch()
+function! Delbranch()
+    execute 'iunmap ['
+    execute 'iunmap ('
+    execute 'iunmap "'
+    execute "iunmap '"
+    execute 'iunmap {'
+endfunction
+
+
 inoremap <C-l> <right>
 inoremap <C-h> <left>
 inoremap <C-k> <up>
@@ -65,10 +77,7 @@ noremap <leader>P <esc>:execute "!php -l " . expand('%:p')<cr>
 inoremap <C-p> <esc>:call Findfiles('')<left><left>
 noremap <leader>p <esc>:call Findfiles('')<left><left>
 function! Findfiles(something)
-    execute "!find " . g:searchPath . " -name " . shellescape('*' . a:something . '*') . " > tmp.search.txt"
-    execute "vsplit " . g:searchPath . '/tmp.search.txt'
+    execute "!find " . g:searchPath . " -name " . shellescape('*' . a:something . '*') . " > ~/.tmp.search.txt"
+    execute "vsplit ~/.tmp.search.txt"
 endfunction
-augroup willer
-autocmd!
-augroup END
 
